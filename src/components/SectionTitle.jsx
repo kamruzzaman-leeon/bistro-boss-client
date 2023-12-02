@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SectionTitle = ({heading,subHeading}) => {
     return (
         <div className="md:w-4/12 mx-auto text-center my-8">

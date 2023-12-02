@@ -1,6 +1,7 @@
 
 import SectionTitle from '../../../components/SectionTitle';
 import ChifRec from '../../../assets/home/slide1.jpg'
+import Button from '../../../components/Button/Button';
 const ChifRecommends = () => {
   return (
     <div>
@@ -17,7 +18,7 @@ const ChifRecommends = () => {
             <h2 className="card-title">Caeser Salad</h2>
             <p >Lettuce, Eggs, Parmeasan Cheese, Chicken Breas Filters</p>
             <div className="card-actions justify-end">
-              <button className="btn  btn-outline border-0 border-b-4 text-yellow-500 hover:text-yellow-500">Add to Cart</button>
+            <Button buttontitle={'Add to Cart'}></Button>
             </div>
           </div>
         </div>
@@ -27,7 +28,7 @@ const ChifRecommends = () => {
             <h2 className="card-title">Caeser Salad</h2>
             <p >Lettuce, Eggs, Parmeasan Cheese, Chicken Breas Filters</p>
             <div className="card-actions justify-end">
-              <button className="btn  btn-outline border-0 border-b-4 text-yellow-500 hover:text-yellow-500">Add to Cart</button>
+            <Button buttontitle={'Add to Cart'}></Button>
             </div>
           </div>
         </div>
@@ -37,7 +38,7 @@ const ChifRecommends = () => {
             <h2 className="card-title">Caeser Salad</h2>
             <p >Lettuce, Eggs, Parmeasan Cheese, Chicken Breas Filters</p>
             <div className="card-actions justify-end">
-              <button className="btn  btn-outline border-0 border-b-4 text-yellow-500 hover:text-yellow-500">Add to Cart</button>
+              <Button buttontitle={'Add to Cart'}></Button>
             </div>
           </div>
         </div>

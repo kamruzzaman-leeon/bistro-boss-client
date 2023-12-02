@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../components/SectionTitle';
 import MenuItem from '../../Shared/MenuItem/MenuItem';
 import useMenu from '../../../hooks/useMenu';
+import Button from '../../../components/Button/Button';
 
 const PopularMenu = () => {
 
@@ -23,12 +24,12 @@ const PopularMenu = () => {
             subHeading='From Our Menu'
             heading='Popular Items'
             ></SectionTitle>
-            <div className='grid md:grid-cols-2 gap-4'>
+            <div className='grid md:grid-cols-2 my-5 gap-4'>
                 {
                   popular.map(item=><MenuItem key={item._id} item={item}></MenuItem>)
                 }
             </div>
-                <div className='text-center'><button className='btn btn-outline border-0 border-b-4 mt-8'>View Full menu</button></div>
+                <div className='text-center'><Button buttontitle={'View Full menu'}></Button></div>
         </div>
     );
 };

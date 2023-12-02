@@ -1,4 +1,3 @@
-import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
@@ -15,27 +14,27 @@ const Banner = () => {
             <Carousel autoPlay>
                 <div>
                     <img src={img1} />
-                    <p className="legend"></p>
+
                 </div>
                 <div>
-                    <img src={img2}/>
-                    <p className="legend"></p>
+                    <img src={img2} />
+
                 </div>
                 <div>
                     <img src={img3} />
-                    <p className="legend"></p>
+
                 </div>
                 <div>
                     <img src={img4} />
-                    <p className="legend"></p>
+
                 </div>
                 <div>
-                    <img src={img5}/>
-                    <p className="legend"></p>
+                    <img src={img5} />
+
                 </div>
                 <div>
                     <img src={img6} />
-                    <p className="legend"></p>
+
                 </div>
             </Carousel>
         </div>
