@@ -4,7 +4,6 @@ import Cover from '../../Shared/Cover/Cover';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from '../../../hooks/useMenu';
-import FoodCard from '../../../components/FoodCard/FoodCard'
 import OrderTab from '../OrderTab/OrderTab';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -15,13 +14,14 @@ const Order = () => {
     const initialIndex = categories.indexOf(category);
     const [tabIndex,setTabIndex]=useState(initialIndex);
     const [menu] = useMenu();
-    
-    // console.log(category)
+  
+    // console.log(menu)
     const dessert = menu.filter(item => item.category === 'dessert')
     const soup = menu.filter(item => item.category === 'soup')
     const salad = menu.filter(item => item.category === 'salad')
     const pizza = menu.filter(item => item.category === 'pizza')
     const drinks = menu.filter(item => item.category === 'drinks')
+   
     return (
         <div>
              <Helmet>
@@ -35,8 +35,7 @@ const Order = () => {
                         <Tab>Dessert</Tab>
                         <Tab>Soup</Tab>
                         <Tab>Salad</Tab>
-                        <Tab>Drinks</Tab>
-                        
+                        <Tab>Drinks</Tab>                        
                     </TabList>
 
                     <TabPanel><OrderTab items={pizza}></OrderTab></TabPanel>

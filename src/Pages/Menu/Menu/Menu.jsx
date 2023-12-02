@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import Cover from '../../Shared/Cover/Cover';
 import menuImg from '../../../assets/menu/banner3.jpg'
@@ -12,6 +11,7 @@ import saladImg from '../../../assets/menu/salad-bg.jpg';
 
 const Menu = () => {
     const [menu] = useMenu();
+    // console.log(menu)
     const dessert = menu.filter(item => item.category === 'dessert')
     const soup = menu.filter(item => item.category === 'soup')
     const salad = menu.filter(item => item.category === 'salad')
@@ -29,8 +29,6 @@ const Menu = () => {
             <MenuCategory items={soup} img={soupImg} title={"soup"}></MenuCategory>
             <MenuCategory items={dessert} img={dessertImg} title={"dessert"}></MenuCategory>
             <MenuCategory items={salad} img={saladImg} title={"salad"}></MenuCategory>
-            
-
         </div>
     );
 };

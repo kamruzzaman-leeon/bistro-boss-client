@@ -1,5 +1,5 @@
-import React from 'react';
-import SectionTitle from '../../../components/SectionTitle';
+// import React from 'react';
+// import SectionTitle from '../../../components/SectionTitle';
 
 const MenuItem = ({item}) => {
     const {name, image,price,recipe}=item;

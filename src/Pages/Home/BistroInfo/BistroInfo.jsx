@@ -1,5 +1,6 @@
 import { Parallax } from 'react-parallax';
 import bistroInfoImg from '../../../assets/home/chef-service.jpg';
+// import Cover from '../../Shared/Cover/Cover';
 const BistroInfo = () => {
     return (
         <section className='my-20'>
@@ -12,6 +13,7 @@ const BistroInfo = () => {
                 </div>
 
             </Parallax>
+            {/* <Cover title={'Bistro Boss'} img={bistroInfoImg}></Cover> */}
         </section>
 
     );
