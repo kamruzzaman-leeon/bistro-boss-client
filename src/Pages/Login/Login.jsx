@@ -1,13 +1,15 @@
-import { useContext } from 'react';
+
 import { useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../providers/AuthProvider';
 import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
   const { signIn, loading } = useAuth();
+  // const na
 
   const handlelogin = e => {
     e.preventDefault();
@@ -18,6 +20,25 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user)
+        Swal.fire({
+          title: "Successfully Login!",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          }
+        });
+        e.target.reset();
+
       })
 
   }
