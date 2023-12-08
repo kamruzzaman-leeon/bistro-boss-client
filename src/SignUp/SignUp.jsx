@@ -3,19 +3,24 @@ import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 const SignUp = () => {
-    const {createUser}=useAuth();
-    const { register, handleSubmit,reset,  formState: { errors } } = useForm();
+    const { createUser, updateUserProfile } = useAuth();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         console.log(data)
-        createUser(data.email,data.password)
-        .then(result=>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            reset()
-        })
-        
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name,data.photoURL)
+                .then(()=>{
+                    console.log("user profile info updated")
+                    reset()
+                }).catch(error=>console.log(error))
+                // reset()
+            })
+
     }
-   
+
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -35,6 +40,13 @@ const SignUp = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="text" placeholder="Photo URL" {...register("photoURL", { required: true })} className="input input-bordered" />
+                            {errors.photoURL?.type === 'required' && <p className='text-red-600'>photoURL is require</p >}
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email" placeholder="email" {...register('email', { required: true })} className="input input-bordered" />
@@ -44,13 +56,13 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" {...register('password', { 
+                            <input type="password" placeholder="password" {...register('password', {
                                 required: true,
-                                minLength: 8, 
-                                maxLength: 20, 
-                                pattern:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+                                minLength: 8,
+                                maxLength: 20,
+                                pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
                                 // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
-                                })} className="input input-bordered" />
+                            })} className="input input-bordered" />
                             {errors.password?.type === 'required' && <p className='text-red-600'>Password is require</p>}
                             {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be 8 character</p>}
                             {errors.password?.type === 'maxLength' && <p className='text-red-600'>Password must be less than 20 character</p>}
