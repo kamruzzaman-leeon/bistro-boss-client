@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import {FaShoppingCart} from 'react-icons/fa';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -11,12 +12,21 @@ const Navbar = () => {
       .catch(error => console.log(error))
   }
   const navoptions = <>
-    <li className="text-black md:text-white"><Link to="/">Home</Link></li>
-    <li className="text-black md:text-white"><Link to="/Menu">Our Menu</Link></li>
-    <li className="text-black md:text-white"><Link to="/order/pizza">Order</Link></li>
+    <li className="text-black lg:text-white"><Link to="/">Home</Link></li>
+    <li className="text-black lg:text-white"><Link to="/Menu">Our Menu</Link></li>
+    <li className="text-black lg:text-white"><Link to="/order/pizza">Order</Link></li>
+    <li>
+      <Link to="/">
+        <button className="btn">
+          <FaShoppingCart></FaShoppingCart>
+          <div className="badge badge-secondary">+0</div>
+        </button>
+      </Link>
+      </li>
     {
       user ? <>
-     <li> <button onClick={handleLogOut} className="btn btn-ghost">Logout</button></li>
+      <li><span className="text-black lg:text-white">{user.displayName}</span></li>
+     <li className=" text-black lg:text-white" onClick={handleLogOut}><span>Logout</span></li>
     </>:<>
         <li className="text-black md:text-white"><Link to="/login">Login</Link></li>
       </>

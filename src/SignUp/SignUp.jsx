@@ -1,22 +1,43 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
-    const { createUser, updateUserProfile } = useAuth();
+    const { createUser, updateUserProfile,logOut } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const navigate = useNavigate();
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                updateUserProfile(data.name,data.photoURL)
-                .then(()=>{
-                    console.log("user profile info updated")
-                    reset()
-                }).catch(error=>console.log(error))
-                // reset()
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        console.log("user profile info updated")
+                        reset();
+                        logOut();
+                        Swal.fire({
+                            title: "Successfully User created!",
+                            showClass: {
+                              popup: `
+                                animate__animated
+                                animate__fadeInUp
+                                animate__faster
+                              `
+                            },
+                            hideClass: {
+                              popup: `
+                                animate__animated
+                                animate__fadeOutDown
+                                animate__faster
+                              `
+                            }
+                          });
+                        navigate('/login');
+                    }).catch(error => console.log(error))
+
             })
 
     }
