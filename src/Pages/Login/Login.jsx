@@ -8,10 +8,10 @@ import Swal from 'sweetalert2';
 const Login = () => {
 
   const { signIn, loading } = useAuth();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from.pathname || '/';
-
+  const from = location.state?.from?.pathname || '/';
+  console.log('state in the location', location.state)
   const handlelogin = e => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -39,7 +39,7 @@ const Login = () => {
           }
         });
         e.target.reset();
-        navigate(from,{replace:true})
+        navigate(from, { replace: true })
       })
 
   }
@@ -84,15 +84,15 @@ const Login = () => {
               <label className="label">
                 <LoadCanvasTemplate />
               </label>
-              <input type="text"  onBlur={handleValidateCaptcha} name='captcha' ref={captchaRef} placeholder='captcha' className="input input-bordered" required />
-              <button  className='btn btn-outline btn-sm mt-2'>Validate</button>
+              <input type="text" onBlur={handleValidateCaptcha} name='captcha' ref={captchaRef} placeholder='captcha' className="input input-bordered" required />
+              <button className='btn btn-outline btn-sm mt-2'>Validate</button>
             </div>
             <div className="form-control mt-6">
               <button disabled={disabled} className="btn btn-primary">Login</button>
             </div>
             <p className='text-center'><small>New Here?</small><small className='text-blue-600'> <Link to="/signup">Sign Up</Link></small></p>
           </form>
-          
+
         </div>
       </div>
     </div>

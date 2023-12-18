@@ -12,23 +12,23 @@ const Navbar = () => {
       .catch(error => console.log(error))
   }
   const navoptions = <>
-    <li className="text-black lg:text-white"><Link to="/">Home</Link></li>
-    <li className="text-black lg:text-white"><Link to="/Menu">Our Menu</Link></li>
-    <li className="text-black lg:text-white"><Link to="/order/pizza">Order</Link></li>
+    <li className="text-black lg:text-white py-1"><Link to="/">Home</Link></li>
+    <li className="text-black lg:text-white  py-1"><Link to="/Menu">Our Menu</Link></li>
+    <li className="text-black lg:text-white  py-1"><Link to="/order/pizza">Order</Link></li>
     <li>
       <Link to="/">
-        <button className="btn">
-          <FaShoppingCart></FaShoppingCart>
+        <button className="btn btn-sm btn-ghost p-0">
+          <FaShoppingCart className=""></FaShoppingCart>
           <div className="badge badge-secondary">+0</div>
         </button>
       </Link>
       </li>
     {
       user ? <>
-      <li><span className="text-black lg:text-white">{user.displayName}</span></li>
-     <li className=" text-black lg:text-white" onClick={handleLogOut}><span>Logout</span></li>
+      <li className=" py-1"><span className="text-black lg:text-white">{user.displayName}</span></li>
+     <li className=" text-black lg:text-white  py-1" onClick={handleLogOut}><span>Logout</span></li>
     </>:<>
-        <li className="text-black md:text-white"><Link to="/login">Login</Link></li>
+        <li className="text-black md:text-white py-1"><Link to="/login">Login</Link></li>
       </>
     }
   </>
@@ -47,7 +47,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {navoptions}
+          {navoptions}  
         </ul>
       </div>
       
