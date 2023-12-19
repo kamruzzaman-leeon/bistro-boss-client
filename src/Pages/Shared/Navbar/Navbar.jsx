@@ -18,8 +18,8 @@ const Navbar = () => {
     <li>
       <Link to="/">
         <button className="btn btn-sm btn-ghost p-0">
-          <FaShoppingCart className=""></FaShoppingCart>
-          <div className="badge badge-secondary">+0</div>
+          <FaShoppingCart></FaShoppingCart>
+          <div className="badge badge-secondary -mt-4 -ml-3">+0</div>
         </button>
       </Link>
       </li>
