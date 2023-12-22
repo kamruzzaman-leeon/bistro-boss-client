@@ -17,8 +17,9 @@ const Navbar = () => {
     <li className="text-black lg:text-white py-1"><Link to="/">Home</Link></li>
     <li className="text-black lg:text-white  py-1"><Link to="/Menu">Our Menu</Link></li>
     <li className="text-black lg:text-white  py-1"><Link to="/order/pizza">Order</Link></li>
+   
     <li>
-      <Link to="/">
+      <Link to="/dashboard/cart">
         <button className="btn btn-sm btn-ghost p-0">
           <FaShoppingCart></FaShoppingCart>
           <div className="badge badge-secondary -mt-4 -ml-3">+{cart.length}</div>
