@@ -4,6 +4,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import useAuth from '../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -91,8 +92,10 @@ const Login = () => {
               <button disabled={disabled} className="btn btn-primary">Login</button>
             </div>
             <p className='text-center'><small>New Here?</small><small className='text-blue-600'> <Link to="/signup">Sign Up</Link></small></p>
+            <div className="divider">Login With</div>
+            <SocialLogin></SocialLogin>
           </form>
-
+            
         </div>
       </div>
     </div>

@@ -2,9 +2,11 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 const SignUp = () => {
-    const { createUser, updateUserProfile,logOut } = useAuth();
+    const axiosPublic = useAxiosPublic();
+    const { createUser, updateUserProfile, logOut } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const onSubmit = (data) => {
@@ -16,30 +18,39 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         console.log("user profile info updated")
-                        reset();
-                        logOut();
-                        Swal.fire({
-                            title: "Successfully User created!",
-                            showClass: {
-                              popup: `
-                                animate__animated
-                                animate__fadeInUp
-                                animate__faster
-                              `
-                            },
-                            hideClass: {
-                              popup: `
-                                animate__animated
-                                animate__fadeOutDown
-                                animate__faster
-                              `
-                            }
-                          });
-                        navigate('/login');
+                        // create user entry in the database
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                        }
+
+                        axiosPublic.post('/user', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    reset();
+                                    logOut();
+                                    Swal.fire({
+                                        title: "Successfully User created!",
+                                        showClass: {
+                                            popup: `
+                                            animate__animated
+                                            animate__fadeInUp
+                                            animate__faster
+                                            `
+                                        },
+                                        hideClass: {
+                                            popup: `
+                                            animate__animated
+                                            animate__fadeOutDown
+                                            animate__faster
+        `
+                                        }
+                                    });
+                                    navigate('/login');
+                                }
+                            })
                     }).catch(error => console.log(error))
-
             })
-
     }
 
 
