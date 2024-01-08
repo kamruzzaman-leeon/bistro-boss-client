@@ -24,7 +24,7 @@ const SignUp = () => {
                             email: data.email,
                         }
 
-                        axiosPublic.post('/user', userInfo)
+                        axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     reset();
