@@ -72,7 +72,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             return unSubscribe();
         }
-    }, [])
+    }, [axiosPublic])
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
